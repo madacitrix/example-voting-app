@@ -39,7 +39,7 @@ pipeline {
           steps{
             echo 'Packaging vote app with docker'
             script{
-              docker.withRegistry('https://hub.docker.com/repository/docker/', 'dockerlogin') {
+              docker.withRegistry('https://registry.hub.docker.com/', 'dockerlogin') {
                   def voteImage = docker.build("madacitrix/vote:v${env.BUILD_ID}", "./vote")
                   voteImage.push()
                   voteImage.push("dev")
